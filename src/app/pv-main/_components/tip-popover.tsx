@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export function TipPopover() {
+export function TipPopover({ children }: { children?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
   return (
     <span
@@ -26,7 +26,7 @@ export function TipPopover() {
           open ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <HouseTip />
+        {children ?? <HouseTip />}
       </div>
     </span>
   );
@@ -77,6 +77,27 @@ function RoofItem({
       <p className="text-[11px] leading-normal text-[#333] text-center -tracking-[0.33px] whitespace-nowrap">
         {label}
       </p>
+    </div>
+  );
+}
+
+export function BaechiTip() {
+  return (
+    <div className="relative w-[222px] bg-white border-2 border-[#36a] rounded-[4px] p-6">
+      <span className="absolute -bottom-[5px] left-1/2 -translate-x-1/2 block size-2 bg-white border-b-2 border-l-2 border-[#36a] rotate-[-45deg]" />
+      <div className="flex flex-col gap-[18px] items-start">
+        <div className="text-[11px] leading-normal text-[#333] -tracking-[0.33px]">
+          <p className="font-medium">千鳥配置</p>
+          <p>太陽光パネルをレンガのように、</p>
+          <p>一列ずつずらして並べる方法</p>
+        </div>
+        <Image
+          src="/assets/images/contents/baechi_tip.svg"
+          alt=""
+          width={174}
+          height={80}
+        />
+      </div>
     </div>
   );
 }
