@@ -11,7 +11,7 @@ type LnbTab = "design" | "sim";
 export function Lnb() {
   const [tab, setTab] = useState<LnbTab>("design");
   return (
-    <aside className="w-[360px] min-h-screen flex flex-col p-6 bg-white/85 backdrop-blur-[7px]">
+    <aside className="w-[360px] h-screen flex flex-col p-6 bg-white/85 backdrop-blur-[7px]">
       <header className="flex items-center justify-center pt-[10px] pb-[20px]">
         <Image
           src="/assets/images/common/pv_logo.svg"
@@ -22,7 +22,7 @@ export function Lnb() {
         />
       </header>
 
-      <div className="flex-1 flex flex-col gap-[34px]">
+      <div className="flex-1 flex flex-col gap-[34px] min-h-0">
         <nav className="flex pt-[18px]">
           <TabItem
             active={tab === "design"}

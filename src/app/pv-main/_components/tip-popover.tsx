@@ -1,15 +1,63 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { createPortal } from "react-dom";
+
+const subscribe = () => () => {};
 
 export function TipPopover({ children }: { children?: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [pos, setPos] = useState<{ left: number; top: number } | null>(null);
+  const triggerRef = useRef<HTMLSpanElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+
+  const updatePos = () => {
+    if (!triggerRef.current) return;
+    const rect = triggerRef.current.getBoundingClientRect();
+    setPos({ left: rect.left + rect.width / 2, top: rect.top });
+  };
+
+  const handleEnter = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    updatePos();
+    setOpen(true);
+  };
+
+  const handleLeave = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 120);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    window.addEventListener("scroll", updatePos, true);
+    window.addEventListener("resize", updatePos);
+    return () => {
+      window.removeEventListener("scroll", updatePos, true);
+      window.removeEventListener("resize", updatePos);
+    };
+  }, [open]);
+
   return (
     <span
+      ref={triggerRef}
       className="relative inline-flex shrink-0"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       <Image
         src={
@@ -21,13 +69,24 @@ export function TipPopover({ children }: { children?: React.ReactNode }) {
         width={16}
         height={16}
       />
-      <div
-        className={`absolute bottom-full left-1/2 -translate-x-1/2 z-10 pb-3 transition-opacity duration-200 ${
-          open ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        {children ?? <HouseTip />}
-      </div>
+      {mounted &&
+        createPortal(
+          <div
+            className={`fixed z-50 pb-3 transition-opacity duration-200 ${
+              open && pos ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+            style={{
+              left: pos?.left ?? 0,
+              top: pos?.top ?? 0,
+              transform: "translate(-50%, -100%)",
+            }}
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+          >
+            {children ?? <HouseTip />}
+          </div>,
+          document.body,
+        )}
     </span>
   );
 }

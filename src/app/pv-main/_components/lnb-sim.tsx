@@ -5,7 +5,12 @@ import { ChevronRight, Section } from "./lnb";
 export function LnbSim() {
   return (
     <>
-      <div className="flex-1 flex flex-col gap-6 pb-[44px]">
+      <div
+        className="flex-1 overflow-x-hidden overflow-y-auto min-h-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-button]:size-0 [&::-webkit-scrollbar-button]:[display:none] [&::-webkit-scrollbar-thumb]:bg-[#c4c4c4] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent"
+        dir="rtl"
+        style={{ scrollbarWidth: "thin", scrollbarColor: "#c4c4c4 transparent" }}
+      >
+        <div className="flex flex-col gap-4 px-1 py-1" dir="ltr">
         <Section
           title="防衛設定"
           iconSrc="/assets/images/contents/tab02_cont_icon01.svg"
@@ -60,6 +65,7 @@ export function LnbSim() {
             </p>
           </div>
         </Section>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2 w-full">
