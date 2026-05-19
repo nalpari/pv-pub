@@ -5,6 +5,7 @@ import {
   SelectBox,
   Toggle,
 } from "@/components/common";
+import { TipPopover } from "./tip-popover";
 
 export function Lnb() {
   return (
@@ -237,7 +238,7 @@ function Section({
         <h2 className="flex-1 text-[14px] font-medium leading-[1.5] text-[#101010]">
           {title}
         </h2>
-        {tip && <TipIcon />}
+        {tip && <TipPopover />}
       </header>
       {children}
     </section>
@@ -250,26 +251,6 @@ function Hint({ children }: { children: React.ReactNode }) {
   );
 }
 
-function TipIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden
-      className="shrink-0"
-    >
-      <circle cx="8" cy="8" r="7" stroke="#999" strokeWidth="1.4" />
-      <path
-        d="M8 7v4M8 5.2v.1"
-        stroke="#999"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 function ChevronRight() {
   return (
