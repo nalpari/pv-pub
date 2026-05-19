@@ -14,7 +14,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "gap-2 px-[18px] bg-[#36a] border border-[#36a] text-white hover:bg-[#1d477e] hover:border-[#1d477e] active:bg-[#0c2648] active:border-[#0c2648]",
   outline:
-    "gap-2 px-[18px] bg-[#f6f8fb] border border-[#d9e2ef] text-[#adc2dd] hover:bg-[#adc2dd] hover:border-[#adc2dd] hover:text-white active:bg-[#36a] active:border-[#36a] active:text-white",
+    "gap-2 px-[10px] bg-[#f6f8fb] border border-[#d9e2ef] text-[#adc2dd] hover:bg-[#adc2dd] hover:border-[#adc2dd] hover:text-white active:bg-[#36a] active:border-[#36a] active:text-white",
   orange:
     "gap-2 px-[18px] bg-[#e74] border border-[#e74] text-white hover:bg-[#d36739] hover:border-[#d36739]",
   "orange-outline":

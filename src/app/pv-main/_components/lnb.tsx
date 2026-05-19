@@ -21,12 +21,28 @@ export function Lnb() {
 
       <div className="flex-1 flex flex-col gap-7">
         <nav className="flex pt-[18px]">
-          <TabItem active label="ソーラーデザイン" icon={<TabSolarIcon />} />
-          <TabItem label="発電シミュレーション" icon={<TabGridIcon />} />
+          <TabItem
+            active
+            label="ソーラーデザイン"
+            iconSrc="/assets/images/contents/tab_icon01.svg"
+            iconWidth={18}
+            iconHeight={18}
+          />
+          <TabItem
+            label="発電シミュレーション"
+            iconSrc="/assets/images/contents/tab_icon02.svg"
+            iconWidth={16}
+            iconHeight={16}
+          />
         </nav>
 
-        <div className="flex-1 flex flex-col gap-6">
-          <Section title="モジュール配置" icon={<LocationIcon />}>
+        <div className="flex-1 flex flex-col gap-6 pb-[44px]">
+          <Section
+            title="モジュール配置"
+            iconSrc="/assets/images/contents/tab01_cont_icon01.svg"
+            iconWidth={14}
+            iconHeight={16}
+          >
             <div className="flex flex-col gap-2">
               <InputBox
                 defaultValue="2 Chome-1-3 Kyobashi,  Chuo City"
@@ -52,14 +68,25 @@ export function Lnb() {
             </Hint>
           </Section>
 
-          <Section title="屋根面傾斜" icon={<RoofIcon />} tip>
+          <Section
+            title="屋根面傾斜"
+            iconSrc="/assets/images/contents/tab01_cont_icon02.svg"
+            iconWidth={16}
+            iconHeight={16}
+            tip
+          >
             <SelectBox
               defaultValue="4"
               options={[{ value: "4", label: "4寸" }]}
             />
           </Section>
 
-          <Section title="モジュール配置" icon={<StackIcon />}>
+          <Section
+            title="モジュール配置"
+            iconSrc="/assets/images/contents/tab01_cont_icon03.svg"
+            iconWidth={14}
+            iconHeight={16}
+          >
             <div className="flex flex-col gap-2">
               <SelectBox
                 defaultValue="rerize"
@@ -121,7 +148,12 @@ export function Lnb() {
             <Hint>※北屋根面は日光が少なく設置を推奨しません ではありません.</Hint>
           </Section>
 
-          <Section title="ソーラーモジュール設置容量" icon={<SunModuleIcon />}>
+          <Section
+            title="ソーラーモジュール設置容量"
+            iconSrc="/assets/images/contents/tab01_cont_icon04.svg"
+            iconWidth={16}
+            iconHeight={18}
+          >
             <div className="flex items-center justify-center h-[72px] px-4 bg-white border border-[#f2f2f2] rounded-[14px] drop-shadow-[0_6px_16px_rgba(0,0,0,0.05)]">
               <p className="text-[18px] font-medium leading-[1.5] text-[#101010]">
                 17枚 · 7,480kW
@@ -146,11 +178,15 @@ export function Lnb() {
 function TabItem({
   active = false,
   label,
-  icon,
+  iconSrc,
+  iconWidth,
+  iconHeight,
 }: {
   active?: boolean;
   label: string;
-  icon: React.ReactNode;
+  iconSrc: string;
+  iconWidth: number;
+  iconHeight: number;
 }) {
   const color = active ? "#e74" : "#767676";
   return (
@@ -163,7 +199,7 @@ function TabItem({
         className="flex items-center justify-center size-[34px] rounded-full"
         style={{ backgroundColor: color }}
       >
-        {icon}
+        <Image src={iconSrc} alt="" width={iconWidth} height={iconHeight} />
       </span>
       <span
         className={`text-[13px] leading-[1.5] ${
@@ -179,12 +215,16 @@ function TabItem({
 
 function Section({
   title,
-  icon,
+  iconSrc,
+  iconWidth,
+  iconHeight,
   tip = false,
   children,
 }: {
   title: string;
-  icon: React.ReactNode;
+  iconSrc: string;
+  iconWidth: number;
+  iconHeight: number;
   tip?: boolean;
   children: React.ReactNode;
 }) {
@@ -192,7 +232,7 @@ function Section({
     <section className="flex flex-col gap-4">
       <header className="flex items-center gap-2">
         <span className="flex items-center justify-center size-[34px] bg-[#f5f7fb] rounded-full">
-          {icon}
+          <Image src={iconSrc} alt="" width={iconWidth} height={iconHeight} />
         </span>
         <h2 className="flex-1 text-[14px] font-medium leading-[1.5] text-[#101010]">
           {title}
@@ -207,139 +247,6 @@ function Section({
 function Hint({ children }: { children: React.ReactNode }) {
   return (
     <p className="text-[12px] leading-[1.5] text-[#999]">{children}</p>
-  );
-}
-
-function TabSolarIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      aria-hidden
-    >
-      <circle cx="9" cy="9" r="2.5" stroke="white" strokeWidth="1.5" />
-      <path
-        d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2M3.7 3.7l1.4 1.4M12.9 12.9l1.4 1.4M3.7 14.3l1.4-1.4M12.9 5.1l1.4-1.4"
-        stroke="white"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function TabGridIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden
-    >
-      <rect x="1" y="1" width="6" height="6" rx="1.5" stroke="white" strokeWidth="1.5" />
-      <rect x="9" y="1" width="6" height="6" rx="1.5" stroke="white" strokeWidth="1.5" />
-      <rect x="1" y="9" width="6" height="6" rx="1.5" stroke="white" strokeWidth="1.5" />
-      <rect x="9" y="9" width="6" height="6" rx="1.5" stroke="white" strokeWidth="1.5" />
-    </svg>
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg
-      width="15"
-      height="16"
-      viewBox="0 0 15 16"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M7.5 1c-3 0-5.5 2.3-5.5 5.2 0 3.8 5.5 8.8 5.5 8.8s5.5-5 5.5-8.8C13 3.3 10.5 1 7.5 1z"
-        stroke="#101010"
-        strokeWidth="1.4"
-      />
-      <circle cx="7.5" cy="6.3" r="1.8" stroke="#101010" strokeWidth="1.4" />
-    </svg>
-  );
-}
-
-function RoofIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M1.2 13.5L8 3l6.8 10.5"
-        stroke="#101010"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M5 9.5l1.5-2 1.5 2 1.5-2 1.5 2"
-        stroke="#101010"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function StackIcon() {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M8 1L1.5 4.5 8 8l6.5-3.5L8 1z"
-        stroke="#101010"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M1.5 8L8 11.5 14.5 8M1.5 11.5L8 15l6.5-3.5"
-        stroke="#101010"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function SunModuleIcon() {
-  return (
-    <svg
-      width="16"
-      height="18"
-      viewBox="0 0 16 18"
-      fill="none"
-      aria-hidden
-    >
-      <path
-        d="M1 11l2-9h10l2 9H1zM3.5 5h9M2 8h12"
-        stroke="#101010"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M5.5 2.5v8.5M10.5 2.5v8.5M1 11h14v3a2 2 0 01-2 2H3a2 2 0 01-2-2v-3z"
-        stroke="#101010"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }
 
