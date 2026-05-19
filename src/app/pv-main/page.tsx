@@ -1,14 +1,12 @@
+import { Lnb } from "./_components/lnb";
+
 export default function PvMainPage() {
   return (
-    <main className="px-4 lg:px-16 py-8 lg:py-12">
-      <header className="mb-10">
-        <h1 className="text-3xl font-bold text-foreground">PV Main</h1>
-        <p className="mt-2 text-sm text-gray-600">PV 메인 화면</p>
-      </header>
-
-      <section>
-        {/* Figma 디자인 적용 예정 */}
-      </section>
-    </main>
+    <div className="flex min-h-screen bg-[#f5f7fb]">
+      <Lnb />
+      <main className="flex-1">
+        {/* 우측 콘텐츠(지도/시뮬레이션) 영역 — 추후 작업 */}
+      </main>
+    </div>
   );
 }
