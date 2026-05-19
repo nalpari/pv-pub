@@ -22,7 +22,7 @@ export function Lnb() {
         />
       </header>
 
-      <div className="flex-1 flex flex-col gap-[34px] min-h-0">
+      <div className="flex-1 flex flex-col gap-[28px] min-h-0">
         <nav className="flex pt-[18px]">
           <TabItem
             active={tab === "design"}
@@ -105,7 +105,7 @@ export function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col gap-4 px-5 pt-6 pb-7 bg-white rounded-[12px] drop-shadow-[0_6px_16px_rgba(0,0,0,0.05)]">
+    <section className="flex flex-col gap-4 py-3.5">
       <header className="flex items-center gap-2">
         <span className="flex items-center justify-center size-[34px] bg-[#f5f7fb] rounded-full">
           <Image src={iconSrc} alt="" width={iconWidth} height={iconHeight} />

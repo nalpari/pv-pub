@@ -7,11 +7,11 @@ export function LnbDesign() {
   return (
     <>
       <div
-        className="flex-1 overflow-x-hidden overflow-y-auto min-h-0 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-button]:size-0 [&::-webkit-scrollbar-button]:[display:none] [&::-webkit-scrollbar-thumb]:bg-[#c4c4c4] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent"
+        className="flex-1 overflow-x-hidden overflow-y-auto min-h-0 -ml-4 pl-2 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-button]:size-0 [&::-webkit-scrollbar-button]:[display:none] [&::-webkit-scrollbar-thumb]:bg-[#c4c4c4] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent"
         dir="rtl"
         style={{ scrollbarWidth: "thin", scrollbarColor: "#c4c4c4 transparent" }}
       >
-        <div className="flex flex-col gap-4 px-1 py-1" dir="ltr">
+        <div className="flex flex-col divide-y divide-[#eef2f7]" dir="ltr">
         <Section
           title="モジュール配置"
           iconSrc="/assets/images/contents/tab01_cont_icon01.svg"
