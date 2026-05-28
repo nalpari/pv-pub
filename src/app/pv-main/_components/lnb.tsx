@@ -11,7 +11,7 @@ type LnbTab = "design" | "sim";
 export function Lnb() {
   const [tab, setTab] = useState<LnbTab>("design");
   return (
-    <aside className="w-[360px] h-screen flex flex-col p-6 bg-white/85 backdrop-blur-[7px]">
+    <aside className="w-[360px] h-screen flex flex-col p-6 bg-[#ededed]">
       <header className="flex items-center justify-center pt-[10px] pb-[20px]">
         <Image
           src="/assets/images/common/pv_logo.svg"
@@ -37,10 +37,10 @@ export function Lnb() {
             label="発電シミュレーション"
             iconSrc="/assets/images/contents/tab_icon02.svg"
             iconWidth={16}
-            iconHeight={16}
+            iconHeight={16} 
             onClick={() => setTab("sim")}
           />
-        </nav>
+        </nav> 
 
         {tab === "design" ? <LnbDesign /> : <LnbSim />}
       </div>
@@ -105,7 +105,7 @@ export function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col gap-4 py-3.5">
+    <section className="flex flex-col gap-4 p-4 bg-white rounded-xl">
       <header className="flex items-center gap-2">
         <span className="flex items-center justify-center size-[34px] bg-[#f5f7fb] rounded-full">
           <Image src={iconSrc} alt="" width={iconWidth} height={iconHeight} />

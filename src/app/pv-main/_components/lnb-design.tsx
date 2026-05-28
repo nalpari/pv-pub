@@ -11,7 +11,7 @@ export function LnbDesign() {
         dir="rtl"
         style={{ scrollbarWidth: "thin", scrollbarColor: "#c4c4c4 transparent" }}
       >
-        <div className="flex flex-col divide-y divide-[#eef2f7]" dir="ltr">
+        <div className="flex flex-col gap-3" dir="ltr">
         <Section
           title="モジュール配置"
           iconSrc="/assets/images/contents/tab01_cont_icon01.svg"
